@@ -13,19 +13,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class opencartdemo {// http://localhost:8012/opencart/upload
+public class sqlConnection {// http://localhost:8012/opencart/upload
 							// http://localhost:8012/opencart/upload/admin
 
 	@Test
 	public void opencart() throws InterruptedException, SQLException {
 
-		String cus_firstname = "ayaansh";
-		String cus_lastname = "naidu";
-		String cus_email ="ayaansh@londongmail.com";
-		String cus_password = "naiduabhi";
+		String cus_firstname = "sushma";
+		String cus_lastname = "shetty";
+		String cus_email ="london@londongmail.com";
+		String cus_password = "sushasn";
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("http://localhost:8012/opencart/upload");
+		driver.get("http://localhost:8083/opencart/upload");
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.partialLinkText("Register")).click();
 		driver.findElement(By.name("firstname")).sendKeys(cus_firstname);
@@ -53,7 +53,7 @@ public class opencartdemo {// http://localhost:8012/opencart/upload
 		
 
 
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3308/opencart","root",""); 
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/opencart8083","root",""); 
 		Statement st = con.createStatement();
 		String sql = "select firstname,lastname,email,password from oc_customer";
 		ResultSet rs =		st.executeQuery(sql);
@@ -80,5 +80,15 @@ public class opencartdemo {// http://localhost:8012/opencart/upload
 		}
 			
 //	driver.close();
+		
+/*		insert method
+		
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/office", "root", "");
+		Statement st = con.createStatement();
+			
+		String sql = "insert into employee values('sushma','shetty',29)";
+
+		 boolean b = st.execute(sql);
+*/	
 	}
 }
