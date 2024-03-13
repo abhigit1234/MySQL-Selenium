@@ -53,7 +53,7 @@ public class sqlConnection {// http://localhost:8012/opencart/upload
 		
 
 
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/opencart8083","root",""); 
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/opencart","root",""); 
 		Statement st = con.createStatement();
 		String sql = "select firstname,lastname,email,password from oc_customer";
 		ResultSet rs =		st.executeQuery(sql);
